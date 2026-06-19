@@ -3,41 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Yaotse Global Network</title>
-
-<!-- PWA SUPPORT -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#d4af37">
+<title>Denova Tech | Code with Vision, Build with Precision</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 <style>
+:root{
+--bg:#07111f;
+--card:#101f34;
+--text:#ffffff;
+--accent:#00e5ff;
+}
+
+.light{
+--bg:#f4f7ff;
+--card:#ffffff;
+--text:#111;
+--accent:#0077ff;
+}
+
 body{
 margin:0;
 font-family:Poppins;
-background:#050816;
-color:white;
-overflow-x:hidden;
+background:var(--bg);
+color:var(--text);
+transition:0.3s;
 }
 
 header{
+position:fixed;
+top:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 8%;
-background:rgba(0,0,0,0.5);
+padding:15px 8%;
+background:rgba(0,0,0,0.7);
 backdrop-filter:blur(10px);
-position:fixed;
-width:100%;
-top:0;
 z-index:1000;
 }
 
 .logo{
+font-size:1.8rem;
 font-weight:800;
-color:#d4af37;
-font-size:1.2rem;
+color:var(--accent);
+}
+
+nav a{
+margin:0 10px;
+text-decoration:none;
+color:var(--text);
+font-weight:600;
+}
+
+nav a:hover{
+color:var(--accent);
+}
+
+.toggle{
+cursor:pointer;
+padding:8px 15px;
+border-radius:20px;
+background:var(--accent);
+color:black;
+font-weight:700;
 }
 
 .hero{
@@ -46,44 +77,40 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:20px;
-background:
-linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
-url('https://images.unsplash.com/photo-1496307653780-42ee777d4833');
-background-size:cover;
-background-position:center;
+background:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4') center/cover;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+}
+
+.hero-content{
+position:relative;
+z-index:1;
 }
 
 .hero h1{
 font-size:3.5rem;
-color:#d4af37;
 }
 
-.hero p{
-max-width:700px;
-margin:auto;
-opacity:0.8;
-}
-
-.btn{
-margin-top:20px;
-padding:12px 25px;
-background:#d4af37;
-border:none;
-font-weight:bold;
-border-radius:30px;
-cursor:pointer;
+.hero span{
+color:var(--accent);
 }
 
 section{
-padding:100px 8%;
+padding:90px 8%;
 }
 
 .title{
 text-align:center;
-color:#d4af37;
-font-size:2rem;
+font-size:2.5rem;
 margin-bottom:40px;
+color:var(--accent);
 }
 
 .grid{
@@ -93,11 +120,9 @@ gap:20px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-padding:20px;
+background:var(--card);
+padding:25px;
 border-radius:15px;
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.1);
 transition:0.3s;
 }
 
@@ -105,15 +130,35 @@ transition:0.3s;
 transform:translateY(-10px);
 }
 
-a{
-display:inline-block;
-margin-top:10px;
+img{
+width:100%;
+border-radius:15px;
+}
+
+input, textarea{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+border:none;
+outline:none;
+}
+
+button{
+padding:12px 18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:700;
+background:var(--accent);
 color:black;
-background:#d4af37;
-padding:10px 15px;
-border-radius:20px;
-text-decoration:none;
-font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:40px;
+background:black;
+margin-top:50px;
 }
 </style>
 </head>
@@ -121,80 +166,190 @@ font-weight:bold;
 <body>
 
 <header>
-<div class="logo">🌍 Yaotse Global Network</div>
+<div class="logo">🚀 Denova Tech</div>
 
-<button onclick="installApp()" style="
-padding:10px 15px;
-background:#d4af37;
-border:none;
-border-radius:20px;
-font-weight:bold;
-cursor:pointer;
-">
-📲 Install App
-</button>
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="toggle" onclick="toggleTheme()">Theme</div>
 </header>
 
 <!-- HERO -->
-<div class="hero">
-<div>
-<h1>Yaotse Global Network</h1>
-<p>
-One Vision. Multiple Platforms. Unlimited Possibilities.
-Your digital headquarters for innovation, technology, and future enterprise.
-</p>
+<section class="hero">
+<div class="hero-content">
+<h1>Denova Tech</h1>
+<p>Code with Vision, Build with Precision</p>
+</div>
+</section>
 
-<button class="btn">Explore Network</button>
+<!-- ABOUT -->
+<section id="about">
+<h2 class="title">👨‍💻 About Me</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Dennis Yaotse</h3>
+<p>Student Innovator, Robotics Enthusiast, Programmer, STEM learner from Ghana.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1531482615713-2afd69097998">
 </div>
 </div>
+</section>
 
-<!-- NETWORK -->
-<section>
-<h2 class="title">🌐 Connected Platforms</h2>
+<!-- SKILLS -->
+<section id="skills">
+<h2 class="title">⚡ Skills</h2>
+
+<div class="grid">
+<div class="card">HTML</div>
+<div class="card">CSS</div>
+<div class="card">JavaScript</div>
+<div class="card">Python</div>
+<div class="card">Robotics</div>
+<div class="card">AI Basics</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2 class="title">🤖 Projects</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Robotics Systems</h3>
+<p>AI and sensor-based robotics experiments.</p>
+</div>
+
+<div class="card">
+<h3>Web Development</h3>
+<p>School and personal web applications.</p>
+</div>
+
+<div class="card">
+<h3>AI Learning</h3>
+<p>Exploring artificial intelligence concepts.</p>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<h2 class="title">📸 Gallery</h2>
+
+<div class="grid">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+<img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2 class="title">📞 Contact Denova Tech</h2>
 
 <div class="grid">
 
+<!-- INFO -->
 <div class="card">
-<h3>🚀 Denova Tech</h3>
-<p>Technology, robotics and innovation hub.</p>
-<a href="https://dennis982.github.io/Denova-Tech-/" target="_blank">Open</a>
+<h3>Contact Information</h3>
+
+<p>📧 Email: dennisyaotse@gmail.com</p>
+<p>📱 Phone: 0257526538</p>
+
+<button onclick="callDev()">📞 Call</button><br><br>
+<button onclick="emailDev()">📧 Email</button><br><br>
+<button onclick="whatsappDev()">💬 WhatsApp</button>
 </div>
 
+<!-- FORM -->
 <div class="card">
-<h3>🌟 Legacy of Dennis</h3>
-<p>Personal journey and leadership story.</p>
-<a href="https://dennis982.github.io/Legacy-of-Dennis-/" target="_blank">Open</a>
-</div>
+<h3>Send Message</h3>
 
-<div class="card">
-<h3>🏛️ Yaotse Global Holdings</h3>
-<p>Future investment and enterprise group.</p>
-<a href="https://dennis982.github.io/Yaotse-Global-Holdings-/" target="_blank">Open</a>
+<input id="name" placeholder="Your Name">
+<input id="email" placeholder="Your Email">
+<textarea id="message" placeholder="Your Message"></textarea>
+
+<button onclick="sendEmail()">🚀 Send Message</button>
+
+<p id="status"></p>
 </div>
 
 </div>
 </section>
 
-<!-- INSTALL LOGIC -->
+<footer>
+🚀 Denova Tech — Innovating Tomorrow, Today
+</footer>
+
 <script>
-let deferredPrompt;
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY");
+})();
 
-window.addEventListener("beforeinstallprompt", (e)=>{
-e.preventDefault();
-deferredPrompt = e;
-});
-
-function installApp(){
-if(deferredPrompt){
-deferredPrompt.prompt();
-deferredPrompt.userChoice.then(()=>{
-deferredPrompt = null;
-});
-}else{
-alert("To install: open browser menu → Add to Home Screen");
+function toggleTheme(){
+document.body.classList.toggle("light");
 }
+
+function sendEmail(){
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let message = document.getElementById("message").value;
+
+if(!name || !email || !message){
+document.getElementById("status").innerText = "⚠ Fill all fields!";
+return;
+}
+
+let params = {
+from_name: name,
+from_email: email,
+message: message,
+to_email: "dennisyaotse@gmail.com"
+};
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",params)
+.then(()=>{
+document.getElementById("status").innerText = "✅ Message sent!";
+})
+.catch(()=>{
+document.getElementById("status").innerText = "❌ Failed to send!";
+});
+}
+
+function callDev(){
+window.location.href = "tel:0257526538";
+}
+
+function emailDev(){
+window.location.href = "mailto:dennisyaotse@gmail.com";
+}
+
+function whatsappDev(){
+window.open("https://wa.me/233257526538");
 }
 </script>
 
+</body>
+</html><!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    Hello, World!
+  </h1>
 </body>
 </html>
