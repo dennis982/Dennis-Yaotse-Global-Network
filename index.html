@@ -3,353 +3,310 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Yaotse Global Network</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
-
 body{
+margin:0;
+font-family:Arial;
 background:#050816;
 color:white;
-overflow-x:hidden;
 }
 
+/* HEADER */
 header{
-position:fixed;
-top:0;
-width:100%;
-padding:20px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(10px);
-z-index:1000;
+padding:15px;
+background:#111a2e;
+color:#d4af37;
+font-weight:bold;
 }
 
-.logo{
-font-size:1.5rem;
-font-weight:800;
-color:#FFD700;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-font-weight:600;
-transition:.3s;
-}
-
-nav a:hover{
-color:#FFD700;
-}
-
+/* HERO */
 .hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
+padding:80px 20px;
 text-align:center;
-padding:20px;
 background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
-url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80');
+linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),
+url('https://images.unsplash.com/photo-1496307653780-42ee777d4833');
 background-size:cover;
 background-position:center;
 }
 
-.hero-content{
-max-width:900px;
-animation:fadeUp 1.5s ease;
-}
-
 .hero h1{
-font-size:4rem;
-color:#FFD700;
-margin-bottom:20px;
-}
-
-.hero p{
-font-size:1.2rem;
-line-height:1.8;
-margin-bottom:30px;
+font-size:3rem;
+color:#d4af37;
 }
 
 .btn{
-display:inline-block;
-padding:15px 30px;
-background:#FFD700;
-color:black;
-text-decoration:none;
-font-weight:700;
-border-radius:50px;
-transition:.3s;
+padding:12px 20px;
+background:#d4af37;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
 }
 
-.btn:hover{
-transform:scale(1.05);
-}
-
+/* SECTIONS */
 section{
-padding:100px 8%;
+padding:60px 20px;
 }
 
-.section-title{
-text-align:center;
-font-size:2.5rem;
-margin-bottom:50px;
-color:#FFD700;
-}
-
+/* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
 }
 
+/* CARD */
 .card{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
-padding:25px;
-border-radius:20px;
-transition:.4s;
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-6px);
 }
 
+/* IMAGES */
 .card img{
 width:100%;
-height:200px;
+height:140px;
 object-fit:cover;
-border-radius:15px;
-margin-bottom:15px;
-}
-
-.card h3{
-color:#FFD700;
+border-radius:10px;
 margin-bottom:10px;
 }
 
-.card a{
-display:inline-block;
-margin-top:15px;
-padding:10px 20px;
-background:#FFD700;
+/* VISIT BUTTON */
+a{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+margin-top:10px;
+padding:10px;
+background:#d4af37;
 color:black;
 text-decoration:none;
-border-radius:30px;
-font-weight:700;
+border-radius:20px;
+font-weight:bold;
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-text-align:center;
+/* LOGIN SCREEN */
+#login{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+input{
+padding:10px;
+margin:5px;
+width:250px;
+border:none;
+border-radius:8px;
+}
+
+/* DASHBOARD */
+#dashboard{
+display:none;
+padding:20px;
 }
 
 .stat{
-background:rgba(255,255,255,.05);
-padding:30px;
-border-radius:20px;
+font-size:2rem;
+color:#d4af37;
 }
 
-.stat h2{
-font-size:2.5rem;
-color:#FFD700;
-}
-
-footer{
-text-align:center;
-padding:40px;
-border-top:1px solid rgba(255,255,255,.1);
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-<div class="logo">🌍 Yaotse Global Network</div>
-
-<nav>
-<a href="#about">About</a>
-<a href="#network">Network</a>
-<a href="#vision">Vision</a>
-<a href="#contact">Contact</a>
-</nav>
+<div>🌍 Yaotse Global Network</div>
+<button onclick="showLogin()">🔐 CEO Panel</button>
 </header>
 
-<section class="hero">
+<!-- HOME -->
+<div id="home">
 
-<div class="hero-content">
-
+<div class="hero">
 <h1>🌍 Yaotse Global Network</h1>
-
-<p>
-One Vision. Multiple Platforms. Unlimited Possibilities.
-The digital headquarters connecting technology, leadership,
-innovation, entrepreneurship, and future enterprise.
-</p>
-
-<a href="#network" class="btn">
-🚀 Explore Network
-</a>
-
+<p>One Vision. Multiple Platforms. Unlimited Possibilities.</p>
+<button class="btn" onclick="scrollToNet()">🚀 Explore Network</button>
 </div>
 
-</section>
-
-<section id="about">
-
-<h2 class="section-title">
-✨ About The Network
-</h2>
-
-<p style="text-align:center;max-width:900px;margin:auto;line-height:2;">
-Yaotse Global Network serves as the central hub connecting all projects,
-brands, and future ventures created by Dennis Yaotse. From technology
-and robotics to leadership, innovation, and enterprise development,
-this ecosystem is designed to inspire growth and create impact.
-</p>
-
-</section>
-
-<section id="network">
-
-<h2 class="section-title">
-🌐 Connected Platforms
-</h2>
+<section>
+<h2 style="text-align:center;color:#d4af37;">🌐 Connected Platforms</h2>
 
 <div class="grid">
 
 <div class="card">
-
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80">
-
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 <h3>🚀 Denova Tech</h3>
-
-<p>
-Technology, robotics, coding, innovation and future solutions.
-</p>
-
-<a href="https://dennis982.github.io/Denova-Tech-/" target="_blank">
-Visit
-</a>
-
+<a href="https://dennis982.github.io/Denova-Tech-/" target="_blank">🔗 Visit Site</a>
 </div>
 
 <div class="card">
-
-<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80">
-
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
 <h3>🌟 Legacy of Dennis</h3>
-
-<p>
-Personal story, achievements, leadership journey and inspiration.
-</p>
-
-<a href="https://dennis982.github.io/Legacy-of-Dennis-/" target="_blank">
-Visit
-</a>
-
+<a href="https://dennis982.github.io/Legacy-of-Dennis-/" target="_blank">🔗 Visit Site</a>
 </div>
 
 <div class="card">
-
-<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">
-
-<h3>🏛️ Yaotse Global Holdings</h3>
-
-<p>
-Future investments, enterprise development and global vision.
-</p>
-
-<a href="https://dennis982.github.io/Yaotse-Global-Holdings-/" target="_blank">
-Visit
-</a>
-
+<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
+<h3>🏛️ Global Holdings</h3>
+<a href="https://dennis982.github.io/Yaotse-Global-Holdings-/" target="_blank">🔗 Visit Site</a>
 </div>
 
 </div>
-
 </section>
 
-<section id="vision">
-
-<h2 class="section-title">
-🔥 Future Vision
-</h2>
-
-<div class="stats">
-
-<div class="stat">
-<h2>3+</h2>
-<p>Active Platforms</p>
 </div>
 
-<div class="stat">
-<h2>∞</h2>
-<p>Growth Potential</p>
+<!-- LOGIN -->
+<div id="login">
+<h2>🏛️ CEO LOGIN</h2>
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="msg"></p>
 </div>
 
-<div class="stat">
-<h2>100%</h2>
-<p>Commitment</p>
+<!-- DASHBOARD -->
+<div id="dashboard">
+
+<h2>📊 CEO DASHBOARD</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>📌 Projects</h3>
+<div class="stat">3</div>
 </div>
 
-<div class="stat">
-<h2>24/7</h2>
-<p>Innovation Mindset</p>
+<div class="card">
+<h3>👁 Visits</h3>
+<div class="stat" id="visits">0</div>
+</div>
+
+<div class="card">
+<h3>📋 Tasks</h3>
+<div class="stat" id="taskCount">0</div>
 </div>
 
 </div>
 
-</section>
+<!-- EXPERT SYSTEM -->
+<h2>🤖 Expert System</h2>
 
-<section id="contact">
+<div class="card">
 
-<h2 class="section-title">
-📞 Contact
-</h2>
+<select id="scenario">
+<option value="growth">Growth</option>
+<option value="risk">Risk</option>
+<option value="tech">Tech</option>
+<option value="income">Income</option>
+</select>
 
-<div style="text-align:center;line-height:2;">
-<p>📧 dennisyaotse@gmail.com</p>
-<p>📱 0257526538</p>
+<button onclick="analyze()">Run Analysis</button>
+
+<p id="aiResult"></p>
+
 </div>
 
-</section>
+<!-- TASKS -->
+<h2>📌 Task Manager</h2>
 
-<footer>
+<div class="card">
 
-<p>
-© 2026 Yaotse Global Network • Built by Dennis Yaotse
-</p>
+<input id="taskInput" placeholder="New task">
+<button onclick="addTask()">Add Task</button>
 
-</footer>
+<ul id="taskList"></ul>
+
+</div>
+
+</div>
+
+<script>
+
+/* NAVIGATION */
+function showLogin(){
+document.getElementById("home").style.display="none";
+document.getElementById("login").style.display="flex";
+document.getElementById("dashboard").style.display="none";
+}
+
+/* LOGIN */
+function login(){
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
+
+if(u==="CEO" && p==="YGN2026"){
+document.getElementById("login").style.display="none";
+document.getElementById("dashboard").style.display="block";
+}else{
+document.getElementById("msg").innerText="Wrong credentials!";
+}
+}
+
+/* VISITS */
+let visits=localStorage.getItem("visits")||0;
+visits++;
+localStorage.setItem("visits",visits);
+
+/* TASK SYSTEM */
+let tasks=JSON.parse(localStorage.getItem("tasks")||"[]");
+
+function addTask(){
+let t=document.getElementById("taskInput").value;
+if(t){
+tasks.push(t);
+localStorage.setItem("tasks",JSON.stringify(tasks));
+render();
+}
+}
+
+function render(){
+document.getElementById("taskList").innerHTML="";
+tasks.forEach(t=>{
+let li=document.createElement("li");
+li.innerText=t;
+document.getElementById("taskList").appendChild(li);
+});
+document.getElementById("taskCount").innerText=tasks.length;
+}
+
+/* EXPERT SYSTEM */
+function analyze(){
+let s=document.getElementById("scenario").value;
+let out="";
+
+if(s==="growth") out="Focus on scaling technology and automation.";
+if(s==="risk") out="Stabilize systems before expansion.";
+if(s==="tech") out="Invest in AI, robotics and infrastructure.";
+if(s==="income") out="Diversify digital revenue streams.";
+
+document.getElementById("aiResult").innerText=out;
+}
+
+render();
+document.getElementById("visits").innerText=visits;
+
+</script>
 
 </body>
 </html>
