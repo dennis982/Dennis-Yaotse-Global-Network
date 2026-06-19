@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YGN Advanced CEO System</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#050816;
+color:white;
+}
+
+/* LOGIN */
+#login{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+input, select{
+padding:12px;
+margin:6px;
+width:250px;
+border-radius:8px;
+border:none;
+}
+
+button{
+padding:12px 20px;
+background:#d4af37;
+border:none;
+border-radius:20px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* DASHBOARD */
+#dashboard{
+display:none;
+padding:20px;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#111a2e;
+color:#d4af37;
+font-weight:bold;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-radius:10px;
+}
+
+/* BIG NUMBERS */
+.stat{
+font-size:2rem;
+color:#d4af37;
+}
+
+/* TASKS */
+ul{
+padding-left:20px;
+}
+
+li{
+margin:5px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+<h2>🏛️ YGN CEO LOGIN</h2>
+
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+
+<header>
+<span>Yaotse Global Network - CEO Control System</span>
+<span>STATUS: ACTIVE</span>
+</header>
+
+<!-- STATS -->
+<div class="grid">
+
+<div class="card">
+<h3>📊 Projects</h3>
+<div class="stat" id="projects">3</div>
+</div>
+
+<div class="card">
+<h3>👁 Visits</h3>
+<div class="stat" id="visits">0</div>
+</div>
+
+<div class="card">
+<h3>📌 Tasks</h3>
+<div class="stat" id="taskCount">0</div>
+</div>
+
+</div>
+
+<!-- EXPERT SYSTEM -->
+<h2>🤖 Expert System</h2>
+
+<div class="card">
+<select id="scenario">
+<option value="growth">Growth Strategy</option>
+<option value="risk">Risk Control</option>
+<option value="tech">Tech Expansion</option>
+<option value="income">Income Plan</option>
+</select>
+
+<button onclick="analyze()">Run Analysis</button>
+
+<p id="aiResult" style="color:#d4af37;"></p>
+</div>
+
+<!-- TASK MANAGER -->
+<h2>📌 Task Manager</h2>
+
+<div class="card">
+
+<input id="taskInput" placeholder="Add new task">
+<button onclick="addTask()">Add Task</button>
+
+<ul id="taskList"></ul>
+
+</div>
+
+</div>
+
+<script>
+
+/* LOGIN */
+function login(){
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
+
+if(u==="CEO" && p==="YGN2026"){
+document.getElementById("login").style.display="none";
+document.getElementById("dashboard").style.display="block";
+localStorage.setItem("login","ok");
+}else{
+document.getElementById("msg").innerText="Wrong credentials!";
+}
+}
+
+/* AUTO LOGIN */
+if(localStorage.getItem("login")==="ok"){
+document.getElementById("login").style.display="none";
+document.getElementById("dashboard").style.display="block";
+}
+
+/* VISITS */
+let visits = localStorage.getItem("visits") || 0;
+visits++;
+localStorage.setItem("visits", visits);
+
+/* TASK SYSTEM */
+let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+
+function renderTasks(){
+document.getElementById("taskList").innerHTML="";
+tasks.forEach((t,i)=>{
+let li=document.createElement("li");
+li.innerText=t;
+document.getElementById("taskList").appendChild(li);
+});
+document.getElementById("taskCount").innerText=tasks.length;
+}
+
+function addTask(){
+let t=document.getElementById("taskInput").value;
+if(t){
+tasks.push(t);
+localStorage.setItem("tasks",JSON.stringify(tasks));
+renderTasks();
+}
+}
+
+/* EXPERT SYSTEM */
+function analyze(){
+let s=document.getElementById("scenario").value;
+let out="";
+
+if(s==="growth"){
+out="Focus on scaling Denova Tech and automation systems.";
+}
+if(s==="risk"){
+out="Reduce expansion risk and stabilize current platforms.";
+}
+if(s==="tech"){
+out="Invest in AI, robotics, and cloud infrastructure.";
+}
+if(s==="income"){
+out="Diversify revenue streams and digital services.";
+}
+
+document.getElementById("aiResult").innerText=out;
+}
+
+/* INIT */
+renderTasks();
+document.getElementById("visits").innerText=visits;
+
+</script>
+
+</body>
+</html>
