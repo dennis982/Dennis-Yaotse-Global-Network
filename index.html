@@ -38,24 +38,11 @@ font-size:3rem;
 color:#d4af37;
 }
 
-.btn{
-padding:12px 20px;
-background:#d4af37;
-border:none;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
-margin-top:10px;
-}
-
-section{
-padding:60px 20px;
-}
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:15px;
+padding:20px;
 }
 
 .card{
@@ -63,6 +50,7 @@ background:rgba(255,255,255,0.05);
 padding:15px;
 border-radius:12px;
 transition:0.3s;
+border:1px solid rgba(255,255,255,0.1);
 }
 
 .card:hover{
@@ -86,6 +74,7 @@ color:black;
 text-decoration:none;
 border-radius:20px;
 font-weight:bold;
+margin-top:10px;
 }
 
 </style>
@@ -95,46 +84,56 @@ font-weight:bold;
 
 <header>
 <div>🌍 Yaotse Global Network</div>
-<button onclick="window.location.href='index.html'">🏠 Home</button>
 </header>
 
 <div class="hero">
 <h1>🌍 Yaotse Global Network</h1>
 <p>One Vision. Multiple Platforms. Unlimited Possibilities.</p>
-
-<button class="btn" onclick="document.getElementById('net').scrollIntoView()">
-🚀 Explore Network
-</button>
 </div>
 
-<section id="net">
+<section>
 
 <h2 style="text-align:center;color:#d4af37;">🌐 Connected Platforms</h2>
 
 <div class="grid">
 
+<!-- 1 -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 <h3>🚀 Denova Tech</h3>
-<a href="https://dennis982.github.io/Denova-Tech-/" target="_blank">Visit Site</a>
+<a href="https://dennis982.github.io/Denova-Tech-/" target="_blank">
+Visit Site
+</a>
 </div>
 
+<!-- 2 -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
 <h3>🌟 Legacy of Dennis</h3>
-<a href="https://dennis982.github.io/Legacy-of-Dennis-/" target="_blank">Visit Site</a>
+<a href="https://dennis982.github.io/Legacy-of-Dennis-/" target="_blank">
+Visit Site
+</a>
 </div>
 
+<!-- 3 -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
-<h3>🏛️ Global Holdings</h3>
-<a href="https://dennis982.github.io/Yaotse-Global-Holdings-/" target="_blank">Visit Site</a>
+<h3>🏛️ Yaotse Global Holdings</h3>
+<a href="https://dennis982.github.io/Yaotse-Global-Holdings-/" target="_blank">
+Visit Site
+</a>
 </div>
 
+<!-- 4 -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769">
-<h3>🤖 3D Mech System</h3>
-<a href="mech-viewer.html">Launch 3D Viewer</a>
+<h3>🤖 3D Mech Viewer</h3>
+
+<!-- FIXED LINK -->
+<a href="./mech-viewer.html" target="_blank">
+Launch 3D System
+</a>
+
 </div>
 
 </div>
