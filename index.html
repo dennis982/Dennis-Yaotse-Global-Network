@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Yaotse Global Network</title>
 
 <style>
@@ -51,12 +50,11 @@ font-weight:bold;
 margin-top:10px;
 }
 
-/* SECTIONS */
+/* GRID */
 section{
 padding:60px 20px;
 }
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -85,7 +83,7 @@ border-radius:10px;
 margin-bottom:10px;
 }
 
-/* VISIT BUTTON */
+/* BUTTON */
 a{
 display:flex;
 align-items:center;
@@ -100,213 +98,61 @@ border-radius:20px;
 font-weight:bold;
 }
 
-/* LOGIN SCREEN */
-#login{
-display:none;
-height:100vh;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-}
-
-input{
-padding:10px;
-margin:5px;
-width:250px;
-border:none;
-border-radius:8px;
-}
-
-/* DASHBOARD */
-#dashboard{
-display:none;
-padding:20px;
-}
-
-.stat{
-font-size:2rem;
-color:#d4af37;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
 <div>🌍 Yaotse Global Network</div>
-<button onclick="showLogin()">🔐 CEO Panel</button>
+<button onclick="alert('CEO Panel Coming Soon')">🔐 CEO</button>
 </header>
 
-<!-- HOME -->
-<div id="home">
-
+<!-- HERO -->
 <div class="hero">
 <h1>🌍 Yaotse Global Network</h1>
 <p>One Vision. Multiple Platforms. Unlimited Possibilities.</p>
-<button class="btn" onclick="scrollToNet()">🚀 Explore Network</button>
+<button class="btn">🚀 Enter Network</button>
 </div>
 
+<!-- PLATFORMS -->
 <section>
+
 <h2 style="text-align:center;color:#d4af37;">🌐 Connected Platforms</h2>
 
 <div class="grid">
 
+<!-- DENOVA -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 <h3>🚀 Denova Tech</h3>
 <a href="https://dennis982.github.io/Denova-Tech-/" target="_blank">🔗 Visit Site</a>
 </div>
 
+<!-- LEGACY -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
 <h3>🌟 Legacy of Dennis</h3>
 <a href="https://dennis982.github.io/Legacy-of-Dennis-/" target="_blank">🔗 Visit Site</a>
 </div>
 
+<!-- HOLDINGS -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
 <h3>🏛️ Global Holdings</h3>
 <a href="https://dennis982.github.io/Yaotse-Global-Holdings-/" target="_blank">🔗 Visit Site</a>
 </div>
 
+<!-- 3D MECH -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769">
+<h3>🤖 3D Mech System</h3>
+<p>Interactive robotic simulation engine.</p>
+<a href="mech-viewer.html" target="_blank">🚀 Launch Viewer</a>
+</div>
+
 </div>
 </section>
-
-</div>
-
-<!-- LOGIN -->
-<div id="login">
-<h2>🏛️ CEO LOGIN</h2>
-<input id="user" placeholder="Username">
-<input id="pass" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
-<p id="msg"></p>
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard">
-
-<h2>📊 CEO DASHBOARD</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>📌 Projects</h3>
-<div class="stat">3</div>
-</div>
-
-<div class="card">
-<h3>👁 Visits</h3>
-<div class="stat" id="visits">0</div>
-</div>
-
-<div class="card">
-<h3>📋 Tasks</h3>
-<div class="stat" id="taskCount">0</div>
-</div>
-
-</div>
-
-<!-- EXPERT SYSTEM -->
-<h2>🤖 Expert System</h2>
-
-<div class="card">
-
-<select id="scenario">
-<option value="growth">Growth</option>
-<option value="risk">Risk</option>
-<option value="tech">Tech</option>
-<option value="income">Income</option>
-</select>
-
-<button onclick="analyze()">Run Analysis</button>
-
-<p id="aiResult"></p>
-
-</div>
-
-<!-- TASKS -->
-<h2>📌 Task Manager</h2>
-
-<div class="card">
-
-<input id="taskInput" placeholder="New task">
-<button onclick="addTask()">Add Task</button>
-
-<ul id="taskList"></ul>
-
-</div>
-
-</div>
-
-<script>
-
-/* NAVIGATION */
-function showLogin(){
-document.getElementById("home").style.display="none";
-document.getElementById("login").style.display="flex";
-document.getElementById("dashboard").style.display="none";
-}
-
-/* LOGIN */
-function login(){
-let u=document.getElementById("user").value;
-let p=document.getElementById("pass").value;
-
-if(u==="CEO" && p==="YGN2026"){
-document.getElementById("login").style.display="none";
-document.getElementById("dashboard").style.display="block";
-}else{
-document.getElementById("msg").innerText="Wrong credentials!";
-}
-}
-
-/* VISITS */
-let visits=localStorage.getItem("visits")||0;
-visits++;
-localStorage.setItem("visits",visits);
-
-/* TASK SYSTEM */
-let tasks=JSON.parse(localStorage.getItem("tasks")||"[]");
-
-function addTask(){
-let t=document.getElementById("taskInput").value;
-if(t){
-tasks.push(t);
-localStorage.setItem("tasks",JSON.stringify(tasks));
-render();
-}
-}
-
-function render(){
-document.getElementById("taskList").innerHTML="";
-tasks.forEach(t=>{
-let li=document.createElement("li");
-li.innerText=t;
-document.getElementById("taskList").appendChild(li);
-});
-document.getElementById("taskCount").innerText=tasks.length;
-}
-
-/* EXPERT SYSTEM */
-function analyze(){
-let s=document.getElementById("scenario").value;
-let out="";
-
-if(s==="growth") out="Focus on scaling technology and automation.";
-if(s==="risk") out="Stabilize systems before expansion.";
-if(s==="tech") out="Invest in AI, robotics and infrastructure.";
-if(s==="income") out="Diversify digital revenue streams.";
-
-document.getElementById("aiResult").innerText=out;
-}
-
-render();
-document.getElementById("visits").innerText=visits;
-
-</script>
 
 </body>
 </html>
